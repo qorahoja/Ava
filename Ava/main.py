@@ -9,7 +9,9 @@ import webbrowser
 import pywhatkit as kit
 import smtplib
 import sys
+from keyboard import press_and_release, write
 import random
+from time import sleep
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty("voices")
 engine.setProperty('voice', voices[0].id)
@@ -111,7 +113,7 @@ def all():
             kit.sendwhatmsg("+998909885351", "Salom men avaman",2,25)
 
         elif "music" in buyruq:
-            kit.playonyt("hope")
+            kit.playonyt("headlight")
         
         elif "emile" in buyruq:
             try:
@@ -157,12 +159,43 @@ def all():
             os.system("taskkill /f /im notepad.exe")
             speak("notepad closed as per your command")
         
-        elif "let's do some coding today" in buyruq:
-            path = ('C:\\Users\\Komol\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.lnk')
-            os.startfile(path)
-            speak("Thank you sir, I have opened the visual studio code for you so that you can work easily")
-            speak("I am here if you have any further orders")
+        elif "coding" in buyruq:
+            speak("Do you want to open a new window or continue what you did yesterday?")
+            code = gapnitushunish()
+            if "window" in code:
 
+                speak("Ok sir this is your new workstation")
+                path = ('C:\\Users\\Komol\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.lnk')
+                os.startfile(path)
+                sleep(7)
+                press_and_release("Ctrl + Shift + n")
+                sleep(7)
+                press_and_release("f11")
+                sleep(6)
+                press_and_release("Ctrl + alt + left windows + n")
+                sleep(3)
+                press_and_release("down arrow")
+                sleep(3)
+                press_and_release("enter")
+                sleep(3)
+                press_and_release("Ctrl + s")
+
+                speak("whatever the file name is")
+                fN = gapnitushunish()
+                if fN:
+                    write(fN)
+                    sleep(3)
+                    press_and_release("enter")
+            
+            else:
+                speak("Ok sir")
+                path = ('C:\\Users\\Komol\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.lnk')
+                os.startfile(path)
+
+                
+            
+
+            
         elif "alarm" in buyruq:
             speak("Sir, exactly what time should I set the alarm. for example tell me at 5:30 AM")
             tt = gapnitushunish()
